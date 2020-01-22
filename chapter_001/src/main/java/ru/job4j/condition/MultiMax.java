@@ -7,9 +7,7 @@ public class MultiMax {
         int firstResult = first > second ? first : second;
         int result = firstResult > third ? firstResult : third;
 
-        if (first == second && first == third){
-            return first;
-        }
         return result;
     }
+
 }
