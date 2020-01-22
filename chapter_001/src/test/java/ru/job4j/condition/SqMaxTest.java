@@ -37,4 +37,11 @@ public class SqMaxTest {
         int result = SqMax.max(3,3,3,3);
         assertThat(result, is(3));
     }
+
+    @Test
+    public void with6473(){
+        int result = SqMax.max(6,4,7,3);
+        assertThat(result, is(7));
+    }
+
 }
