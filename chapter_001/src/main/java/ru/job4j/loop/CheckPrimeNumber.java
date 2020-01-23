@@ -4,6 +4,9 @@ public class CheckPrimeNumber {
 
     public static boolean check(int finish){
 
+        if(finish <= 1)
+            return false;
+
         boolean prime = true;
 
         for (int i = 2 ; i <= finish/2; i++){
@@ -12,6 +15,7 @@ public class CheckPrimeNumber {
                 break;
             }
         }
+
         return prime;
     }
 }
