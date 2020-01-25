@@ -25,14 +25,14 @@ public class FindLoopTest {
     @Test
     public void whenFindInRange(){
         int[] in = new int[]{1,2,3,4,5,6,7,8,9};
-        int resultIndex = FindLoop.indexOf(in, 4,0,3);
-        assertThat(resultIndex, is(4));
+        int resultIndex = FindLoop.indexOf(in, 4,0,4);
+        assertThat(resultIndex, is(3));
     }
 
     @Test
     public void whenDidNotFindInRange(){
         int[] in = new int[]{1,2,3,4,5,6,7,8,9};
-        int resultIndex = FindLoop.indexOf(in, 3,3,8);
+        int resultIndex = FindLoop.indexOf(in, 3,3,9);
         assertThat(resultIndex, is(-1));
     }
 
