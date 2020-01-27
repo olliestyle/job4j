@@ -41,7 +41,7 @@ public class MinRangeTest {
     }
 
     @Test
-    public void whenMin1(){
-        assertThat(MinRange.findMin(new int[]{7,6,5,4,3,2,1},2,6), is(1));
+    public void whenMin1() {
+        assertThat(MinRange.findMin(new int[]{7, 6, 5, 4, 3, 2, 1}, 2, 6), is(1));
     }
 }

@@ -13,7 +13,7 @@ public class MaxTest {
         assertThat(result, is(2));
     }
     @Test
-    public void whenLeftIsMax(){
+    public void whenLeftIsMax() {
         int left = 100;
         int right = 90;
         int result = Max.max(left, right);
@@ -21,7 +21,7 @@ public class MaxTest {
     }
 
     @Test
-    public void whenRightIsMax(){
+    public void whenRightIsMax() {
         int left = 1;
         int right = 55;
         int result = Max.max(left, right);
@@ -29,7 +29,7 @@ public class MaxTest {
     }
 
     @Test
-    public void whenLeftEqualsRight(){
+    public void whenLeftEqualsRight() {
         int left = 32;
         int right = 32;
         int result = Max.max(left, right);

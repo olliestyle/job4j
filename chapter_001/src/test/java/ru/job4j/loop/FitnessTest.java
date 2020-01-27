@@ -8,7 +8,7 @@ import static org.junit.Assert.*;
 public class FitnessTest {
 
     @Test
-    public void whenIvanLessByFourNik(){
+    public void whenIvanLessByFourNik() {
         Fitness fitness = new Fitness();
         int month = fitness.calc(30, 120);
         assertThat(month, is(4));

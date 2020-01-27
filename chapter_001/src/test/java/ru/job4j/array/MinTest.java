@@ -7,9 +7,9 @@ import static org.junit.Assert.assertThat;
 public class MinTest {
 
     @Test
-    public void whenMin3(){
+    public void whenMin3() {
         int min = 3;
-        int[] toFind = new int[]{4,7,3,9,5,6};
+        int[] toFind = new int[]{4, 7, 3, 9, 5, 6};
         int resultMin = Min.findMin(toFind);
         assertThat(resultMin, is(min));
     }

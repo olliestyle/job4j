@@ -10,9 +10,9 @@ public class MatrixCheckTest {
     @Test
     public void whenHasMonoHorizontal() {
         char[][] input = {
-            { ' ', ' ', ' ' },
-            { 'X', 'X', 'X' },
-            { ' ', ' ', ' '},
+            {' ', ' ', ' '},
+            {'X', 'X', 'X'},
+            {' ', ' ', ' '},
         };
 
         boolean result = MatrixCheck.monoHorizontal(input, 1);
@@ -22,10 +22,10 @@ public class MatrixCheckTest {
     @Test
     public void whenHasMonoHorizontal2() {
         char[][] input = {
-                { ' ', ' ', ' ' },
-                { ' ', ' ', ' ' },
-                { ' ', ' ', ' '},
-                { 'X', 'X', 'X', 'X', 'X', 'X', 'X'},
+                {' ', ' ', ' '},
+                {' ', ' ', ' '},
+                {' ', ' ', ' '},
+                {'X', 'X', 'X', 'X', 'X', 'X', 'X'},
         };
 
         boolean result = MatrixCheck.monoHorizontal(input, 3);
@@ -35,10 +35,10 @@ public class MatrixCheckTest {
     @Test
     public void whenHasMonoHorizontal3() {
         char[][] input = {
-                { ' ', ' ', ' ' },
-                { ' ', ' ', ' ' },
-                { ' ', ' ', ' '},
-                { 'X', 'X', 'X', 'X', 'X', 'X', 'X'},
+                {' ', ' ', ' '},
+                {' ', ' ', ' '},
+                {' ', ' ', ' '},
+                {'X', 'X', 'X', 'X', 'X', 'X', 'X'},
         };
 
         boolean result = MatrixCheck.monoHorizontal(input, 2);
@@ -46,11 +46,11 @@ public class MatrixCheckTest {
     }
 
     @Test
-    public void whenHasMonoVertical(){
+    public void whenHasMonoVertical() {
         char[][] input = {
-                { ' ', ' ', 'X' },
-                { ' ', ' ', 'X' },
-                { ' ', ' ', 'X'},
+                {' ', ' ', 'X'},
+                {' ', ' ', 'X'},
+                {' ', ' ', 'X'},
         };
 
         boolean result = MatrixCheck.monoVertical(input, 2);
@@ -58,16 +58,16 @@ public class MatrixCheckTest {
     }
 
     @Test
-    public void whenDiagonal(){
+    public void whenDiagonal() {
         char[][] input = {
-                { 'a', ' ', 'X', 'k' },
-                { ' ', 'b', 'X', 'l' },
-                { ' ', ' ', 'c', 'z'},
-                { ' ', ' ', 'X', 'd'},
+                {'a', ' ', 'X', 'k'},
+                {' ', 'b', 'X', 'l'},
+                {' ', ' ', 'c', 'z'},
+                {' ', ' ', 'X', 'd'},
         };
-        char[] expected = {'a','b','c','d'};
+        char[] expected = {'a', 'b', 'c', 'd'};
         char[] result = MatrixCheck.extractDiagonal(input);
-        assertThat(result,is(expected));
+        assertThat(result, is(expected));
     }
 
     @Test

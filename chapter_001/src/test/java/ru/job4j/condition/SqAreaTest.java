@@ -6,7 +6,7 @@ import org.junit.Test;
 public class SqAreaTest {
 
     @Test
-    public void square(){
+    public void square() {
 
         //определяем входные данные
         int inP = 6;

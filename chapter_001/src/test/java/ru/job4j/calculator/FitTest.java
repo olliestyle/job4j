@@ -6,7 +6,7 @@ import org.junit.Test;
 public class FitTest {
 
     @Test
-    public void manWeight(){
+    public void manWeight() {
 
         int in = 178; // определяем входные данные
         double expected = 89.7; // определяем ожидаемый результат от выполнения программы
@@ -15,7 +15,7 @@ public class FitTest {
     }
 
     @Test
-    public void womanWeight(){
+    public void womanWeight() {
 
         int in = 164;
         double expected = 62.1;
