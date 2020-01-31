@@ -10,14 +10,13 @@ public class Merge {
 
         int leftIndex = 0, rightIndex = 0;
 
-        if (left.length == 0) {
-            return right;
-        } else if (right.length == 0) {
-            return left;
-        }
+//        if (left.length == 0) {
+//            return right;
+//        } else if (right.length == 0) {
+//            return left;
+//        }
         while (leftIndex + rightIndex < rsl.length) {
-            rsl[leftIndex + rightIndex] = left[leftIndex] < right[rightIndex] ? left[leftIndex++] : right[rightIndex++];
-            if (leftIndex == left.length) {
+            if (leftIndex == left.length || left.length == 0) {
                 //leftIndex--;
                 while (leftIndex + rightIndex < rsl.length) {
                     rsl[leftIndex + rightIndex] = right[rightIndex];
@@ -25,7 +24,7 @@ public class Merge {
                 }
                 return rsl;
             }
-            if (rightIndex == right.length) {
+            if (rightIndex == right.length || right.length == 0) {
                 //rightIndex--;
                 while (leftIndex + rightIndex < rsl.length) {
                     rsl[leftIndex + rightIndex] = left[leftIndex];
@@ -33,6 +32,7 @@ public class Merge {
                 }
                 return rsl;
             }
+            rsl[leftIndex + rightIndex] = left[leftIndex] < right[rightIndex] ? left[leftIndex++] : right[rightIndex++];
         }
         return rsl;
     }
