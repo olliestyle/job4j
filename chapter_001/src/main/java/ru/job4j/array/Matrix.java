@@ -1,7 +1,11 @@
 package ru.job4j.array;
 
 public class Matrix {
-
+    /**
+     * Метод для создания таблицы умножения
+     * @param size
+     * @return
+     */
     public int[][] multiple(int size) {
 
         int[][] array2D = new int[size][size];

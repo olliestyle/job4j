@@ -1,7 +1,14 @@
 package ru.job4j.condition;
 
 public class Point {
-
+    /**
+     * Метод вычисления расстояния между двумя точками по их координатам
+     * @param x1
+     * @param y1
+     * @param x2
+     * @param y2
+     * @return
+     */
     public static double distance(int x1, int y1, int x2, int y2) {
         return Math.sqrt(Math.pow((x2 - x1), 2) + Math.pow((y2 - y1), 2));
     }

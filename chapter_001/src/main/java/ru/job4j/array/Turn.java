@@ -1,7 +1,11 @@
 package ru.job4j.array;
 
 public class Turn {
-
+    /**
+     * Метод переворота массива
+     * @param array
+     * @return
+     */
     public int[] back(int[] array) {
 
         for (int i = 0; i < array.length / 2; i++) {

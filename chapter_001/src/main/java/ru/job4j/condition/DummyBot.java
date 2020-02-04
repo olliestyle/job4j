@@ -1,7 +1,11 @@
 package ru.job4j.condition;
 
 public class DummyBot {
-
+    /**
+     * Метод ответа бота на простые вопросы
+     * @param question
+     * @return
+     */
     public static String answer(String question) {
 
         String rsl = "Это ставит меня в тупик. Задайте другой вопрос.";

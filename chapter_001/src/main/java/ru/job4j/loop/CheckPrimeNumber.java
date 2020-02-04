@@ -1,9 +1,12 @@
 package ru.job4j.loop;
 
 public class CheckPrimeNumber {
-
+    /**
+     * Метод проверки числа на принадлежность к простым числам
+     * @param finish
+     * @return
+     */
     public static boolean check(int finish) {
-
         if (finish <= 1) {
             return false;
         }

@@ -1,7 +1,12 @@
 package ru.job4j.array;
 
 public class EndsWith {
-
+    /**
+     * Метод, аналогичный методу endsWith класса String
+     * @param word
+     * @param post
+     * @return
+     */
     public static boolean endsWith(char[] word, char[] post) {
 
         boolean result = true;

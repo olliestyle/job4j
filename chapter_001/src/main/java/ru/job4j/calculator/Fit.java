@@ -1,5 +1,8 @@
 package ru.job4j.calculator;
 
+/**
+ * Класс для вычисления оптимального веса по заданному росту человека
+ */
 public class Fit {
 
     public static double manWeight(double height) {

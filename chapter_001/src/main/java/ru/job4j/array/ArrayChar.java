@@ -1,7 +1,12 @@
 package ru.job4j.array;
 
 public class ArrayChar {
-
+    /**
+     * Метод, аналогичный методу startsWith класса String
+     * @param word
+     * @param pref
+     * @return
+     */
     public static boolean startsWith(char[] word, char[] pref) {
 
         boolean result = true;

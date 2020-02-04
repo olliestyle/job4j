@@ -1,5 +1,5 @@
 /**
- * Package for calculate task.
+ * Package for generate task.
  *
  * @author Baibolatov Murat (olliestyle1989@gmail.com)
  * @version $Id$

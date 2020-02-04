@@ -1,7 +1,11 @@
 package ru.job4j.array;
 
 public class SortSelected {
-
+    /**
+     * Сортировки массива методом вставки
+     * @param data
+     * @return
+     */
     public static int[] sort(int[] data) {
 
         for (int i = 0; i < data.length; i++) {

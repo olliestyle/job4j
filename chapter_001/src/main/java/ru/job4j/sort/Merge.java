@@ -3,18 +3,18 @@ package ru.job4j.sort;
 import java.util.Arrays;
 
 public class Merge {
-
+    /**
+     * Метод объединения отсортированных массивов
+     * @param left
+     * @param right
+     * @return
+     */
     public int[] merge(int[] left, int[] right) {
 
         int[] rsl = new int[left.length + right.length];
 
         int leftIndex = 0, rightIndex = 0;
 
-//        if (left.length == 0) {
-//            return right;
-//        } else if (right.length == 0) {
-//            return left;
-//        }
         while (leftIndex + rightIndex < rsl.length) {
             if (leftIndex == left.length || left.length == 0) {
                 //leftIndex--;

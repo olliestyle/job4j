@@ -1,9 +1,13 @@
 package ru.job4j.condition;
 
 public class SqArea {
-
+    /**
+     * Метод вычисления площади прямоугольника
+     * @param p
+     * @param k
+     * @return
+     */
     public static double square(int p, int k) {
-
         double h = p / (2 * (k + 1));
         double lL = h * k;
         double s = lL * h;

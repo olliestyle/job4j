@@ -1,7 +1,11 @@
 package ru.job4j.array;
 
 public class Defragment {
-
+    /**
+     * Метод сдвига null значений в правую часть массива
+     * @param array
+     * @return
+     */
     public static String[] compress(String[] array) {
 
         for (int index = 0; index < array.length; index++) {

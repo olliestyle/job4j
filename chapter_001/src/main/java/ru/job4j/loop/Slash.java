@@ -1,11 +1,15 @@
 package ru.job4j.loop;
 
 public class Slash {
+    /**
+     * Метод отрисовки креста, состоящего из символа "X"
+     * @param size
+     */
     public static void draw(int size) {
         for (int row = 0; row < size; row++) {
             for (int cell = 0; cell < size; cell++) {
-                boolean left = cell == row ? true : false; // добавить условие, по которому нужно определить ставить ли символ или нет.
-                boolean right = size - 1 == cell + row ? true : false; // добавить условие, что нужно ставить элемент в правый угол.
+                boolean left = cell == row ? true : false;
+                boolean right = size - 1 == cell + row ? true : false;
                 if (left) {
                     System.out.print("0");
                 } else if (right) {
