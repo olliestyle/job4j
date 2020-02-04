@@ -1,14 +1,28 @@
 package ru.job4j.condition;
 
 public class Max {
-    /**
-     * Метод распознования, какое число больше left или right
-     * @param left
-     * @param right
-     * @return
-     */
-    public static int max(int left, int right) {
-        int result = left > right ? left : right;
+
+    public static int max(int first, int second) {
+        int result = first > second ? first : second;
         return result;
+    }
+
+    public static int max(int first, int second, int third) {
+        int firstResult = max(first, second);
+        int result = max(firstResult, third);
+        return result;
+    }
+
+    public static int max(int first, int second, int third, int forth) {
+
+        if(forth > max(first, second, third)) {
+            return forth;
+        } else if(third > max(first, second, forth)) {
+            return third;
+        } else if(second > max(first, third, forth)) {
+            return second;
+        } else {
+            return first;
+        }
     }
 }
