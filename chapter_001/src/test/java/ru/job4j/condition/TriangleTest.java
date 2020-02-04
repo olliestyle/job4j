@@ -8,14 +8,24 @@ import static org.junit.Assert.assertThat;
 public class TriangleTest {
 
     @Test
-    public void whenExist() {
-        boolean result = Triangle.exist(2.0, 2.0, 2.0);
-        assertThat(result, is(true));
+    public void whenAreaIs5() {
+        Point first = new Point(0, 0);
+        Point second = new Point(2, 2);
+        Point third = new Point(0, 5);
+        Triangle triangle = new Triangle(first, second, third);
+        double expected = 5;
+        double result = triangle.area();
+        assertThat(result, is(expected));
     }
 
     @Test
-    public void whenNotExist() {
-        boolean result = Triangle.exist(0.4, 0.4, 1.0);
-        assertThat(result, is(false));
+    public void whenTriangleDontExist() {
+        Point first = new Point(0, 0);
+        Point second = new Point(0, 0);
+        Point third = new Point(0, 0);
+        Triangle triangle = new Triangle(first, second, third);
+        double expected = -1;
+        double result = triangle.area();
+        assertThat(result, is(expected));
     }
 }
