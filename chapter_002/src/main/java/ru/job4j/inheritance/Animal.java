@@ -7,7 +7,14 @@ public class Animal {
         System.out.println("In Animal Constructor");
     }
 
+    public Animal(String name){
+        name = "animalName";
+        System.out.println("In Animal Constructor with String param");
+        System.out.println(name);
+    }
+
     public static void main(String[] args) {
-        Tiger tiger = new Tiger();
+        String hello = "";
+        Tiger tiger = new Tiger(hello);
     }
 }
