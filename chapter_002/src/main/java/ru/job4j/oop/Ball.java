@@ -9,7 +9,7 @@ public class Ball {
 
     }
 
-    public void tryToTrick(Fox fox){
+    public void tryToTrick(Fox fox) {
 
     }
 }

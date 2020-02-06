@@ -57,7 +57,7 @@ public class Triangle {
      * @return
      */
     private boolean exist() {
-        if (this.ab + this.ac > this.bc && this.ab + this.bc > this.ac && this.ac + this.bc > this.ab){
+        if (this.ab + this.ac > this.bc && this.ab + this.bc > this.ac && this.ac + this.bc > this.ab) {
             return true;
         }
         return false;

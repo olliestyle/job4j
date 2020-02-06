@@ -7,7 +7,7 @@ public class Animal {
         System.out.println("In Animal Constructor");
     }
 
-    public Animal(String name){
+    public Animal(String name) {
         name = "animalName";
         System.out.println("In Animal Constructor with String param");
         System.out.println(name);
