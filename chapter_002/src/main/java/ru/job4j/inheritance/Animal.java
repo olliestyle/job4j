@@ -2,13 +2,15 @@ package ru.job4j.inheritance;
 
 public class Animal {
 
+    private String name;
+
     public Animal() {
         super();
         System.out.println("In Animal Constructor");
     }
 
     public Animal(String name) {
-        name = "animalName";
+        this.name = name;
         System.out.println("In Animal Constructor with String param");
         System.out.println(name);
     }
