@@ -59,12 +59,24 @@ public class Tracker {
     }
 
     public Item findById(String id) {
-        for(int index = 0; index < this.items.length; index++) {
-            if(this.items[index].getId().equals(id)){
-                return this.items[index];
-            }
-        }
-        return null;
+        return this.items[indexOf(id)];
     }
 
+    private int indexOf(String id) {
+        int rsl = -1;
+        for (int index = 0; index < this.position; index++) {
+            if (this.items[index].getId().equals(id)) {
+                rsl = index;
+                break;
+            }
+        }
+        return rsl;
+    }
+
+    public boolean replace(String id, Item item) {
+        Item itemToReplace = findById(id);
+        itemToReplace.setName(item.getName());
+        item.setId(itemToReplace.getId());
+        return true;
+    }
 }
