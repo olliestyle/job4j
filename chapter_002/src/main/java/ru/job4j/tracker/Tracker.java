@@ -51,12 +51,32 @@ public class Tracker {
     }
 
     public Item findById(String id) {
-        for(int index = 0; index < this.position; index++) {
-            if(this.items[index].getId().equals(id)){
-                return this.items[index];
-            }
+        if (indexOf(id) == -1) {
+            return null;
+        } else {
+            return items[indexOf(id)];
         }
-        return null;
     }
 
+    private int indexOf(String id) {
+        int rsl = -1;
+        for (int index = 0; index < position; index++) {
+            if (items[index].getId().equals(id)) {
+                rsl = index;
+                break;
+            }
+        }
+        return rsl;
+    }
+
+    public boolean replace(String id, Item item) {
+        Item itemToReplace = findById(id);
+        if(findById(id) == null){
+            return false;
+        } else {
+            itemToReplace.setName(item.getName());
+            item.setId(itemToReplace.getId());
+            return true;
+        }
+    }
 }
