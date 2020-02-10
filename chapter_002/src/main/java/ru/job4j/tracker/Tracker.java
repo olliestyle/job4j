@@ -79,4 +79,18 @@ public class Tracker {
             return true;
         }
     }
+
+    public boolean delete(String id) {
+        if (indexOf(id) == -1) {
+            return false;
+        } else {
+            int start = indexOf(id) + 1;
+            int distPos = indexOf(id);
+            int size = position - indexOf(id);
+            items[position] = null;
+            position--;
+            System.arraycopy(items, start, items, distPos, size);
+            return true;
+        }
+    }
 }
