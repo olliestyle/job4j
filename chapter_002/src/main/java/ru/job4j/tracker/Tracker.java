@@ -35,22 +35,14 @@ public class Tracker {
     }
 
     public Item[] findAll() {
-        Item[] itemsWithoutNull = new Item[items.length];
-        int size = 0;
-        for(int index = 0; index < this.items.length; index++) {
-            if(this.items[index] != null){
-                itemsWithoutNull[size] = this.items[index];
-                size++;
-            }
-        }
-        return Arrays.copyOf(itemsWithoutNull, size);
+        return Arrays.copyOf(items, position);
     }
 
     public Item[] findByName(String key) {
-        Item[] itemsFinded = new Item[items.length];
+        Item[] itemsFinded = new Item[position];
         int size = 0;
-        for(int index = 0; index < this.items.length; index++) {
-            if(this.items[index] != null && this.items[index].getName().equals(key)){
+        for(int index = 0; index < this.position; index++) {
+            if(this.items[index].getName().equals(key)){
                 itemsFinded[size] = this.items[index];
                 size++;
             }
@@ -59,17 +51,18 @@ public class Tracker {
     }
 
     public Item findById(String id) {
-        if (indexOf(id) != -1){
-            return this.items[indexOf(id)];
-        } else {
+        int indexOf = indexOf(id);
+        if (indexOf == -1) {
             return null;
+        } else {
+            return items[indexOf];
         }
     }
 
     private int indexOf(String id) {
         int rsl = -1;
-        for (int index = 0; index < this.position; index++) {
-            if (this.items[index].getId().equals(id)) {
+        for (int index = 0; index < position; index++) {
+            if (items[index].getId().equals(id)) {
                 rsl = index;
                 break;
             }
@@ -78,18 +71,28 @@ public class Tracker {
     }
 
     public boolean replace(String id, Item item) {
-        Item itemToReplace = findById(id);
-        itemToReplace.setName(item.getName());
-        item.setId(itemToReplace.getId());
-        return true;
+        int indexOfItemToReplace = indexOf(id);
+        if (indexOfItemToReplace == -1) {
+            return false;
+        } else {
+            item.setId(id);
+            items[indexOfItemToReplace] = item;
+            return true;
+        }
     }
 
-    public void delete(String id) {
-        int start = indexOf(id) + 1;
-        int distPos = indexOf(id);
-        int size = position - indexOf(id);
-        items[position] = null;
-        position--;
-        System.arraycopy(items, start, items, distPos, size);
+    public boolean delete(String id) {
+        int indexOfItemToDelete = indexOf(id);
+        if (indexOfItemToDelete == -1) {
+            return false;
+        } else {
+            int start = indexOfItemToDelete + 1;
+            int distPos = indexOfItemToDelete;
+            int size = position - indexOfItemToDelete;
+            items[position] = null;
+            position--;
+            System.arraycopy(items, start, items, distPos, size);
+            return true;
+        }
     }
 }
