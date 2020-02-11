@@ -82,12 +82,13 @@ public class Tracker {
     }
 
     public boolean delete(String id) {
-        if (indexOf(id) == -1) {
+        int indexOfItemToDelete = indexOf(id);
+        if (indexOfItemToDelete == -1) {
             return false;
         } else {
-            int start = indexOf(id) + 1;
-            int distPos = indexOf(id);
-            int size = position - indexOf(id);
+            int start = indexOfItemToDelete + 1;
+            int distPos = indexOfItemToDelete;
+            int size = position - indexOfItemToDelete;
             items[position] = null;
             position--;
             System.arraycopy(items, start, items, distPos, size);
