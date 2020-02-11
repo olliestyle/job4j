@@ -51,10 +51,11 @@ public class Tracker {
     }
 
     public Item findById(String id) {
-        if (indexOf(id) == -1) {
+        int indexOf = indexOf(id);
+        if (indexOf == -1) {
             return null;
         } else {
-            return items[indexOf(id)];
+            return items[indexOf];
         }
     }
 
@@ -70,12 +71,12 @@ public class Tracker {
     }
 
     public boolean replace(String id, Item item) {
-        Item itemToReplace = findById(id);
-        if(findById(id) == null){
+        int indexOfItemToReplace = indexOf(id);
+        if (indexOfItemToReplace == -1) {
             return false;
         } else {
-            itemToReplace.setName(item.getName());
-            item.setId(itemToReplace.getId());
+            item.setId(id);
+            items[indexOfItemToReplace] = item;
             return true;
         }
     }
