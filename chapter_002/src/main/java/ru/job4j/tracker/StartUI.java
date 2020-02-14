@@ -25,16 +25,13 @@ public class StartUI {
                 System.out.println("=== Edit Item ===");
                 System.out.println("Enter id of item to edit");
                 String id = scanner.nextLine();
-                Item item = tracker.findById(id);
-                if (item == null){
-                    System.out.println("There is no item with this id " + id);
-                } else {
-                    System.out.print("Set new id: ");
-                    item.setId(scanner.nextLine());
-                    System.out.println();
-                    System.out.print("Set new name: ");
-                    item.setName(scanner.nextLine());
+                System.out.print("Set new name: ");
+                String name = scanner.nextLine();
+                boolean canBeReplaced = tracker.replace(id, new Item(name));
+                if (canBeReplaced){
                     System.out.println("Item was edited");
+                } else {
+                    System.out.println("There is no item with this id " + id);
                 }
             } else if (select == 3) {
                 System.out.println("=== Delete Item ===");
