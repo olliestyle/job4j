@@ -19,7 +19,7 @@ public class Bus implements Transport {
     @Override
     public float fillFuel(float fuelCount, float priceForLiter) {
         this.fuelCount += fuelCount;
-        return fuelCount*priceForLiter;
+        return fuelCount * priceForLiter;
     }
 
     public static void main(String[] args) {
@@ -30,14 +30,14 @@ public class Bus implements Transport {
         bus.addPassangers(3);
         bus.drive();
         bus.addPassangers(5);
-        System.out.println("Количество пассажиров до заправки: " + bus.getPassengers() +
-                ". Количество топлива до заправки: " + bus.getFuelCount());
-        System.out.println("Заправляемся на 30 литров по цене 47.87 руб/литр. Итого: " +
-                bus.fillFuel(30, 47.87f) + " руб.");
+        System.out.println("Количество пассажиров до заправки: " + bus.getPassengers()
+                + ". Количество топлива до заправки: " + bus.getFuelCount());
+        System.out.println("Заправляемся на 30 литров по цене 47.87 руб/литр. Итого: "
+                + bus.fillFuel(30, 47.87f) + " руб.");
         bus.drive();
         bus.addPassangers(30);
-        System.out.println("Количество пассажиров после заправки: " + bus.getPassengers() +
-                ". Количество топлива после заправки: " + bus.getFuelCount());
+        System.out.println("Количество пассажиров после заправки: " + bus.getPassengers()
+                + ". Количество топлива после заправки: " + bus.getFuelCount());
     }
 
     public int getPassengers() {

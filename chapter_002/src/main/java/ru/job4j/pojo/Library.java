@@ -14,7 +14,7 @@ public class Library {
         myBooks[2] = divineComedy;
         myBooks[3] = warAndPeace;
 
-        for(int i = 0; i < myBooks.length; i++){
+        for (int i = 0; i < myBooks.length; i++) {
             System.out.println("Book - " + myBooks[i].getName() + ". Kol-vo stranic - " + myBooks[i].getNumberOfPages());
         }
 
@@ -24,14 +24,14 @@ public class Library {
         myBooks[3] = temp;
         System.out.println("Adter swap [0] and [3]");
 
-        for(int i = 0; i < myBooks.length; i++){
+        for (int i = 0; i < myBooks.length; i++) {
             System.out.println("Book - " + myBooks[i].getName() + ". Kol-vo stranic - " + myBooks[i].getNumberOfPages());
         }
 
         System.out.println("Only Clean code");
 
-        for(int i = 0; i < myBooks.length; i++){
-            if(myBooks[i].getName().equals("Clean code")){
+        for (int i = 0; i < myBooks.length; i++) {
+            if (myBooks[i].getName().equals("Clean code")) {
                 System.out.println("Book - " + myBooks[i].getName() + ". Kol-vo stranic - " + myBooks[i].getNumberOfPages());
             }
         }

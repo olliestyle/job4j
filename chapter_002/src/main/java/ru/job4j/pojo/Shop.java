@@ -6,8 +6,8 @@ public class Shop {
 
         products[index] = null;
 
-        for(int i = 0; i < products.length - 1; i++){
-            if(products[i] == null){
+        for (int i = 0; i < products.length - 1; i++) {
+            if (products[i] == null) {
                 products[i] = products[i + 1];
                 products[i + 1] = null;
             }
@@ -17,7 +17,7 @@ public class Shop {
     }
 
     public static void main(String[] args) {
-        Product products[] = new Product[5];
+        Product[] products = new Product[5];
         products[0] = new Product("Milk", 10);
         products[1] = new Product("Bread", 4);
         products[2] = new Product("Egg", 19);

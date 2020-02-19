@@ -47,8 +47,8 @@ public class StartUI {
     public static void showAllItems(Input input, Tracker tracker) {
         System.out.println("=== List of all Items ===");
         Item[] items = tracker.findAll();
-        for(int i = 0; i < items.length; i++) {
-            System.out.println(i+1 + ". id: " + items[i].getId() + ". name: " + items[i].getName());
+        for (int i = 0; i < items.length; i++) {
+            System.out.println(i + 1 + ". id: " + items[i].getId() + ". name: " + items[i].getName());
         }
     }
 
@@ -57,7 +57,7 @@ public class StartUI {
         String id = input.askStr("Enter id of item to edit");
         String name = input.askStr("Set new name: ");
         boolean canBeReplaced = tracker.replace(id, new Item(name));
-        if (canBeReplaced){
+        if (canBeReplaced) {
             System.out.println("Item was edited");
         } else {
             System.out.println("There is no item with this id " + id);
@@ -68,7 +68,7 @@ public class StartUI {
         System.out.println("=== Delete Item ===");
         String id = input.askStr("Enter id of item to delete");
         boolean canBeDeleted = tracker.delete(id);
-        if (canBeDeleted){
+        if (canBeDeleted) {
             System.out.println("Item was deleted");
         } else {
             System.out.println("There is no item with this id " + id);
@@ -79,7 +79,7 @@ public class StartUI {
         System.out.println("=== Find Item by ID===");
         String id = input.askStr("Enter id of item to find");
         Item item = tracker.findById(id);
-        if (item == null){
+        if (item == null) {
             System.out.println("There is no item with this id " + id);
         } else {
             System.out.println("Item was found: id " + item.getId() + ", name " + item.getName());
@@ -90,12 +90,12 @@ public class StartUI {
         System.out.println("=== Find Item by Name===");
         String name = input.askStr("Enter name of item to find");
         Item[] items = tracker.findByName(name);
-        if (items.length == 0){
+        if (items.length == 0) {
             System.out.println("There is no items with this name: " + name);
         } else {
             System.out.println("List of items that was found: ");
-            for(int i = 0; i < items.length; i++) {
-                System.out.println(i+1 + ". id: " + items[i].getId() + ". name: " + items[i].getName());
+            for (int i = 0; i < items.length; i++) {
+                System.out.println(i + 1 + ". id: " + items[i].getId() + ". name: " + items[i].getName());
             }
         }
     }
