@@ -12,11 +12,24 @@ public class FindEl {
         throw new ElementNotFoundException("Element not found");
     }
 
+    public static boolean sent(String value, String[] abuses) throws ElementAbuseException {
+        for(String abuse: abuses) {
+            if(value == abuse) {
+                throw new ElementAbuseException("Element is in abuseList!");
+            }
+        }
+        return true;
+    }
+
     public static void main(String[] args) {
         String[] names = {"vanya", "kamol", "oleg", "egor"};
+        String[] abuses = {"vanya", "kamol"};
         try{
-            System.out.println("Index of element is " + FindEl.indexOf(names, "error"));
-        } catch (ElementNotFoundException e){
+            System.out.println("Index of element is " + FindEl.indexOf(names, "oleg"));
+            System.out.println("Try sent method -> " + FindEl.sent("gol", abuses));
+        } catch (ElementAbuseException e) {
+            e.printStackTrace();
+        } catch (ElementNotFoundException e) {
             e.printStackTrace();
         }
     }
