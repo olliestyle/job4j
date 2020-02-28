@@ -1,19 +1,50 @@
 package ru.job4j.tracker;
 
-public class ValidateInput extends ConsoleInput {
+/**
+ * Мы расширяем интерфейс Input.
+ * Часть реализации мы получаем за счет ссылки на реализацию private Input input.
+ * То есть мы можем в это поле передать класс ConsoleInput или StubInput
+ * и к их поведению добавить поведение валидации.
+ */
+public class ValidateInput implements Input {
+    private final Input input;
+
+    public ValidateInput(Input input) {
+        this.input = input;
+    }
+
+    @Override
+    public String askStr(String question) {
+        return input.askStr(question);
+    }
+
+    @Override
+    public int askInt(String question) {
+        boolean invalid = true;
+        int value = -1;
+        do {
+            try {
+                value = input.askInt(question);
+                invalid = false;
+            } catch (NumberFormatException nfe) {
+                System.out.println("Please enter validate data again");
+            }
+        } while(invalid);
+        return value;
+    }
+
     @Override
     public int askInt(String question, int max) {
         boolean invalid = true;
         int value = -1;
         do {
             try {
-                value = super.askInt(question, max);
+                value = input.askInt(question, max);
                 invalid = false;
             } catch (IllegalStateException moe) {
-                System.out.println(moe.getMessage());
-                System.out.println("Please select key from menu");
+                System.out.println("Please select key from menu.");
             } catch (NumberFormatException nfe) {
-                System.out.println("Please enter validate data again");
+                System.out.println("Please enter validate data again.");
             }
         } while (invalid);
         return value;
