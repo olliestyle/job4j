@@ -29,4 +29,12 @@ public class MachineTest {
         int[] rsl = machine.change(100, 71);
         assertThat(rsl, is(expected));
     }
+
+    @Test
+    public void when100by72() {
+        Machine machine = new Machine();
+        int[] expected = {10, 10, 5, 2, 1};
+        int[] rsl = machine.change(100, 72);
+        assertThat(rsl, is(expected));
+    }
 }
