@@ -36,8 +36,8 @@ public class ProductTest {
                 LocalDateTime.of(2013, Month.JANUARY, 01, 00, 00, 00),
                 LocalDateTime.of(2013, Month.FEBRUARY, 20, 23, 59, 59),
                 11000)};
-        Price[] result = product.merge(pricesBeforeUpdate, incomingPrice);
-        assertThat(result, is(expected));
+        product.merge(pricesBeforeUpdate, incomingPrice);
+        assertThat(pricesBeforeUpdate[0].getEnd(), is(expected[0].getEnd())); // проверяем поменялась ли дата
     }
 
     @Test
