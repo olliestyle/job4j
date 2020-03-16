@@ -29,4 +29,17 @@ public class PriorityQueueTest {
         assertThat(result.getDesk(), is("very urgent"));
     }
 
+    @Test
+    public void withBreak() {
+        PriorityQueue queue = new PriorityQueue();
+        queue.put(new Task("very urgent", 1));
+        queue.put(new Task("middle3", 3));
+        queue.put(new Task("middle4", 4));
+        queue.put(new Task("low", 5));
+        queue.put(new Task("very low", 7));
+        queue.put(new Task("middle2", 2));
+        Task result = queue.take();
+        assertThat(result.getDesk(), is("very urgent"));
+    }
+
 }
