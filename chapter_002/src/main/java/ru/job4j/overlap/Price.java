@@ -25,14 +25,6 @@ public class Price {
     private LocalDateTime end;
     private long value;
 
-    public boolean isOverlaps(Price currentPrice, Price incomingPrice) {
-        if(incomingPrice.getEnd().compareTo(currentPrice.getEnd()) > 0) {
-            currentPrice.setEnd(incomingPrice.getEnd());
-            return true;
-        }
-        return false;
-    }
-
     public long getId() {
         return id;
     }
@@ -87,5 +79,18 @@ public class Price {
 
     public void setValue(long value) {
         this.value = value;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) return true;
+        if (obj == null || getClass() != obj.getClass()) return false;
+        Price price = (Price) obj;
+        return product_code == price.product_code &&
+               number == price.number &&
+                depart == price.depart &&
+                begin.equals(price.begin) &&
+                end.equals(price.end) &&
+                value == price.value;
     }
 }
