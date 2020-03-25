@@ -1,5 +1,7 @@
 package ru.job4j.overlap;
 
+import java.util.List;
+
 public interface PriceUpdate {
-    Price[] merge(Price[] currentPrices, Price[] newPrices);
+    List<Price> merge(List<Price> currentPrices, List<Price> newPrices) throws CloneNotSupportedException;
 }

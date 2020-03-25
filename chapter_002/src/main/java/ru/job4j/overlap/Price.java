@@ -6,7 +6,11 @@ import java.time.LocalDateTime;
  * POJO цена
  */
 
-public class Price {
+public class Price implements Cloneable{
+
+    public Price() {
+
+    }
 
     public Price(String product_code, int number, int depart, LocalDateTime begin, LocalDateTime end, long value) {
         this.product_code = product_code;
@@ -92,5 +96,10 @@ public class Price {
                 begin.equals(price.begin) &&
                 end.equals(price.end) &&
                 value == price.value;
+    }
+
+    @Override
+    protected Object clone() throws CloneNotSupportedException {
+        return super.clone();
     }
 }
