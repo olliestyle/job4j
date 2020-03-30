@@ -14,43 +14,49 @@ public class BankService {
         users.putIfAbsent(user, accounts);
     }
 
-    public void addAccount(String passport, Account account) throws UserNotFoundException {
+    public void addAccount(String passport, Account account){
         User user = findByPassport(passport);
-        List<Account> accounts = users.get(user);
-        if (accounts.contains(account)) {
-            System.out.println("There is already exist account that you want to add");
+        if(user == null) {
+            System.out.println("User not found");
         } else {
-            accounts.add(account);
+            List<Account> accounts = users.get(user);
+            if (accounts.contains(account)) {
+                System.out.println("There is already exist account that you want to add");
+            } else {
+                accounts.add(account);
+            }
         }
+
     }
 
-    public User findByPassport(String passport) throws UserNotFoundException {
-        User userToReturn = null;
+    public User findByPassport(String passport) {
         for(User user: users.keySet()) {
-            if(!passport.equals(user.getPassport())) {
-                throw new UserNotFoundException("No user with same passport data");
+            if(passport.equals(user.getPassport())) {
+                return user;
             }
-            userToReturn = user;
         }
-        return userToReturn;
+        return null;
     }
 
-    public Account findByRequisite(String passport, String requisite) throws UserNotFoundException, AccountNotFoundException {
+    public Account findByRequisite(String passport, String requisite) throws AccountNotFoundException {
         User user = findByPassport(passport);
-        List<Account> accountList = users.get(user);
-        for(Account accountToFind: accountList) {
-            if(accountToFind.getRequisite().equals(requisite)) {
-                return accountToFind;
+        if(user != null) {
+            List<Account> accountList = users.get(user);
+            for(Account accountToFind: accountList) {
+                if(accountToFind.getRequisite().equals(requisite)) {
+                    return accountToFind;
+                }
             }
+            throw new AccountNotFoundException("No account found");
         }
-        throw new AccountNotFoundException("No account found");
+        return null;
     }
 
-    public boolean transferMoney(String srcPassport, String srcRequisite, String destPassport, String destRequisite, double amount) throws UserNotFoundException, AccountNotFoundException {
+    public boolean transferMoney(String srcPassport, String srcRequisite, String destPassport, String destRequisite, double amount) throws AccountNotFoundException {
         boolean rsl = false;
         Account accountFromTransfer = findByRequisite(srcPassport, srcRequisite);
         Account accountToTransfer = findByRequisite(destPassport, destRequisite);
-        if(accountFromTransfer != null && accountToTransfer != null && accountFromTransfer.getBalance() <= accountToTransfer.getBalance()) {
+        if(accountFromTransfer != null && accountToTransfer != null && accountFromTransfer.getBalance() >= amount) {
             accountFromTransfer.setBalance(accountFromTransfer.getBalance() - amount);
             accountToTransfer.setBalance(accountToTransfer.getBalance() + amount);
             rsl = true;
@@ -67,20 +73,5 @@ public class BankService {
         System.out.println(find.getRequisite() + " -> " + find.getBalance());
         BankService bankService = new BankService();
         bankService.addUser(new User("hello", "murat"));
-        try {
-            bankService.addAccount("hello", new Account("333", 50));
-        } catch (UserNotFoundException unfe) {
-            System.out.println("UserNotFound");
-        }
-        try {
-            bankService.addAccount("hello", new Account("333", 50));
-        } catch (UserNotFoundException unfe) {
-            System.out.println("UserNotFound");
-        }
-        try {
-            bankService.addAccount("hell", new Account("333", 50));
-        } catch (UserNotFoundException unfe) {
-            System.out.println("UserNotFound");
-        }
     }
 }
