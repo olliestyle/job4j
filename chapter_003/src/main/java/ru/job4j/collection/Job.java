@@ -1,5 +1,7 @@
 package ru.job4j.collection;
 
+import java.util.Objects;
+
 public class Job implements Comparable<Job>{
 
     private String name;
@@ -29,5 +31,18 @@ public class Job implements Comparable<Job>{
     @Override
     public int compareTo(Job another) {
         return Integer.compare(priority, another.priority);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(name, priority);
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) return true;
+        if (obj == null || getClass() != obj.getClass()) return false;
+        Job job = (Job) obj;
+        return priority == job.priority && name.equals(job.name);
     }
 }
