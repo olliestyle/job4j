@@ -10,7 +10,7 @@ import static org.junit.Assert.assertThat;
 public class PhoneDictionaryTest {
 
     @Test
-    public void WhenFindByName() {
+    public void whenFindByName() {
         PhoneDictionary phones = new PhoneDictionary();
         phones.add(new Person("Petr", "Arsentev", "534872", "Bryansk"));
         ArrayList<Person> persons = phones.find("Petr");
@@ -18,7 +18,7 @@ public class PhoneDictionaryTest {
     }
 
     @Test
-    public void WhenFindBySurname() {
+    public void whenFindBySurname() {
         PhoneDictionary phones = new PhoneDictionary();
         phones.add(new Person("Petr", "Arsentev", "534872", "Bryansk"));
         ArrayList<Person> persons = phones.find("sente");
@@ -26,7 +26,7 @@ public class PhoneDictionaryTest {
     }
 
     @Test
-    public void WhenFindByPhoneNumber() {
+    public void whenFindByPhoneNumber() {
         PhoneDictionary phones = new PhoneDictionary();
         phones.add(new Person("Petr", "Arsentev", "534872", "Bryansk"));
         ArrayList<Person> persons = phones.find("3487");
@@ -34,7 +34,7 @@ public class PhoneDictionaryTest {
     }
 
     @Test
-    public void WhenFindByAddress() {
+    public void whenFindByAddress() {
         PhoneDictionary phones = new PhoneDictionary();
         phones.add(new Person("Petr", "Arsentev", "534872", "Bryansk"));
         ArrayList<Person> persons = phones.find("Brya");
@@ -42,7 +42,7 @@ public class PhoneDictionaryTest {
     }
 
     @Test
-    public void WhenNotFind() {
+    public void whenNotFind() {
         PhoneDictionary phones = new PhoneDictionary();
         phones.add(new Person("Petr", "Arsentev", "534872", "Bryansk"));
         ArrayList<Person> persons = phones.find("Missed");

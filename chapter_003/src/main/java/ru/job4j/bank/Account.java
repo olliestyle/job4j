@@ -35,8 +35,12 @@ public class Account {
 
     @Override
     public boolean equals(Object obj) {
-        if(this == obj) return true;
-        if(obj == null || getClass() != obj.getClass()) return false;
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null || getClass() != obj.getClass()) {
+            return false;
+        }
         Account account = (Account) obj;
         // приватность поля обеспечивается по отношению класса вообщем, а не конкретно к экземпляру класса
         // именно поэтому мы можем обратиться к приватному полю другого объекта, но одного и того же класса

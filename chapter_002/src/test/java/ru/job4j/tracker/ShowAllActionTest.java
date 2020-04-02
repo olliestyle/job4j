@@ -20,8 +20,8 @@ public class ShowAllActionTest {
         tracker.add(item);
         ShowAllAction action = new ShowAllAction();
         action.execute(new StubInput(new String[]{}), tracker);
-        String expect = new StringJoiner(System.lineSeparator(), "1. id: ", System.lineSeparator())
-                .add(item.getId() + ". name: " + item.getName())
+        String expect = new StringJoiner(System.lineSeparator(), "", System.lineSeparator())
+                .add(item.getId() + " " + item.getName())
                 .toString();
         assertThat(new String(out.toByteArray()), is(expect));
         System.setOut(def);

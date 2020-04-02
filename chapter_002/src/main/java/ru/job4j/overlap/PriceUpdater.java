@@ -9,11 +9,11 @@ public class PriceUpdater implements PriceUpdate {
     @Override
     public List<Price> merge(List<Price> currentPrices, List<Price> newPrices) throws CloneNotSupportedException {
         List<Price> updated = new ArrayList<>();
-        for(Price currentPrice: currentPrices){
-            for(Price newPrice: newPrices) {
+        for (Price currentPrice: currentPrices) {
+            for (Price newPrice: newPrices) {
                 if (isMatchFound(currentPrice, newPrice)) {
-                    if(isNotOverlaps(currentPrice, newPrice)) {
-                        if(!updated.contains(currentPrice)){
+                    if (isNotOverlaps(currentPrice, newPrice)) {
+                        if (!updated.contains(currentPrice)) {
                             updated.add(currentPrice);
                         }
                         updated.add(newPrice);
@@ -28,17 +28,17 @@ public class PriceUpdater implements PriceUpdate {
     }
 
     private boolean isMatchFound(Price currentPrice, Price newPrice) {
-        if (newPrice.getProduct_code().equals(currentPrice.getProduct_code()) &&
-                newPrice.getNumber() == currentPrice.getNumber() &&
-                newPrice.getDepart() == currentPrice.getDepart()) {
+        if (newPrice.getProductCode().equals(currentPrice.getProductCode())
+                && newPrice.getNumber() == currentPrice.getNumber()
+               && newPrice.getDepart() == currentPrice.getDepart()) {
             return true;
         }
         return false;
     }
 
     private boolean isNotOverlaps(Price currentPrice, Price newPrice) {
-        if(currentPrice.getBegin().compareTo(newPrice.getBegin()) > 0 && currentPrice.getBegin().compareTo(newPrice.getEnd()) > 0 ||
-        currentPrice.getEnd().compareTo(newPrice.getBegin()) < 0 && currentPrice.getEnd().compareTo(newPrice.getEnd()) < 0) {
+        if (currentPrice.getBegin().compareTo(newPrice.getBegin()) > 0 && currentPrice.getBegin().compareTo(newPrice.getEnd()) > 0
+                || currentPrice.getEnd().compareTo(newPrice.getBegin()) < 0 && currentPrice.getEnd().compareTo(newPrice.getEnd()) < 0) {
             return true;
         }
         return false;
@@ -46,33 +46,37 @@ public class PriceUpdater implements PriceUpdate {
 
     private List<Price> overlaps(Price currentPrice, Price newPrice) throws CloneNotSupportedException {
         List<Price> toAdd = new ArrayList<>();
-        if(currentPrice.getValue() == newPrice.getValue()) {
-            if (currentPrice.getBegin().compareTo(newPrice.getBegin()) > 0) currentPrice.setBegin(newPrice.getBegin());
-            if (currentPrice.getEnd().compareTo(newPrice.getEnd()) < 0) currentPrice.setEnd(newPrice.getEnd());
+        if (currentPrice.getValue() == newPrice.getValue()) {
+            if (currentPrice.getBegin().compareTo(newPrice.getBegin()) > 0) {
+                currentPrice.setBegin(newPrice.getBegin());
+            }
+            if (currentPrice.getEnd().compareTo(newPrice.getEnd()) < 0) {
+                currentPrice.setEnd(newPrice.getEnd());
+            }
             toAdd.add(currentPrice);
             return toAdd;
         } else {
-            if(currentPrice.getBegin().compareTo(newPrice.getBegin()) > 0 &&
-               currentPrice.getBegin().compareTo(newPrice.getEnd()) < 0 &&
-               currentPrice.getEnd().compareTo(newPrice.getEnd()) > 0) {
+            if (currentPrice.getBegin().compareTo(newPrice.getBegin()) > 0
+                    && currentPrice.getBegin().compareTo(newPrice.getEnd()) < 0
+              && currentPrice.getEnd().compareTo(newPrice.getEnd()) > 0) {
                 currentPrice.setBegin(newPrice.getEnd());
                 toAdd.add(newPrice);
                 toAdd.add(currentPrice);
                 return toAdd;
-            } else if(currentPrice.getBegin().compareTo(newPrice.getBegin()) < 0 &&
-                      currentPrice.getEnd().compareTo(newPrice.getBegin()) > 0 &&
-                      currentPrice.getEnd().compareTo(newPrice.getEnd()) < 0) {
+            } else if (currentPrice.getBegin().compareTo(newPrice.getBegin()) < 0
+                     && currentPrice.getEnd().compareTo(newPrice.getBegin()) > 0
+                     && currentPrice.getEnd().compareTo(newPrice.getEnd()) < 0) {
                         currentPrice.setEnd(newPrice.getBegin());
                         toAdd.add(currentPrice);
                         toAdd.add(newPrice);
-            } else if(currentPrice.getBegin().compareTo(newPrice.getBegin()) > 0 &&
-                      currentPrice.getEnd().compareTo(newPrice.getEnd()) < 0) {
+            } else if (currentPrice.getBegin().compareTo(newPrice.getBegin()) > 0
+                    && currentPrice.getEnd().compareTo(newPrice.getEnd()) < 0) {
                 toAdd.add(newPrice);
                 return toAdd;
             } else {
                 LocalDateTime temp = currentPrice.getEnd();
                 currentPrice.setEnd(newPrice.getBegin());
-                Price tempPrice =(Price) currentPrice.clone();
+                Price tempPrice = (Price) currentPrice.clone();
                 toAdd.add(tempPrice);
                 toAdd.add(newPrice);
                 currentPrice.setBegin(newPrice.getEnd());

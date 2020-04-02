@@ -7,10 +7,10 @@ public class LexSort implements Comparator<String> {
     public int compare(String o1, String o2) {
         int dotIndexO1 = 0;
         int dotIndexO2 = 0;
-        while(o1.charAt(dotIndexO1) != '.') {
+        while (o1.charAt(dotIndexO1) != '.') {
             dotIndexO1++;
         }
-        while(o2.charAt(dotIndexO2) != '.') {
+        while (o2.charAt(dotIndexO2) != '.') {
             dotIndexO2++;
         }
         Integer o1Number = Integer.valueOf(o1.substring(0, dotIndexO1));

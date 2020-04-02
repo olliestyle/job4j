@@ -14,9 +14,9 @@ public class BankService {
         users.putIfAbsent(user, accounts);
     }
 
-    public void addAccount(String passport, Account account){
+    public void addAccount(String passport, Account account) {
         User user = findByPassport(passport);
-        if(user == null) {
+        if (user == null) {
             System.out.println("User not found");
         } else {
             List<Account> accounts = users.get(user);
@@ -30,8 +30,8 @@ public class BankService {
     }
 
     public User findByPassport(String passport) {
-        for(User user: users.keySet()) {
-            if(passport.equals(user.getPassport())) {
+        for (User user: users.keySet()) {
+            if (passport.equals(user.getPassport())) {
                 return user;
             }
         }
@@ -40,10 +40,10 @@ public class BankService {
 
     public Account findByRequisite(String passport, String requisite) throws AccountNotFoundException {
         User user = findByPassport(passport);
-        if(user != null) {
+        if (user != null) {
             List<Account> accountList = users.get(user);
-            for(Account accountToFind: accountList) {
-                if(accountToFind.getRequisite().equals(requisite)) {
+            for (Account accountToFind: accountList) {
+                if (accountToFind.getRequisite().equals(requisite)) {
                     return accountToFind;
                 }
             }
@@ -56,7 +56,7 @@ public class BankService {
         boolean rsl = false;
         Account accountFromTransfer = findByRequisite(srcPassport, srcRequisite);
         Account accountToTransfer = findByRequisite(destPassport, destRequisite);
-        if(accountFromTransfer != null && accountToTransfer != null && accountFromTransfer.getBalance() >= amount) {
+        if (accountFromTransfer != null && accountToTransfer != null && accountFromTransfer.getBalance() >= amount) {
             accountFromTransfer.setBalance(accountFromTransfer.getBalance() - amount);
             accountToTransfer.setBalance(accountToTransfer.getBalance() + amount);
             rsl = true;

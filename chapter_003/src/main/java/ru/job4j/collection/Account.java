@@ -21,18 +21,22 @@ public class Account {
 
     @Override
     public boolean equals(Object obj) {
-        if (this == obj) return true;
-        if (obj == null || getClass() != obj.getClass()) return false;
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null || getClass() != obj.getClass()) {
+            return false;
+        }
         Account account = (Account) obj;
         return Objects.equals(passport, account.passport);
     }
 
     @Override
     public String toString() {
-        return "Account{" +
-                "passport='" + passport + '\'' +
-                ", username='" + username + '\'' +
-                ", deposit='" + deposit + '\'' +
-                '}';
+        return "Account{"
+                + "passport='" + passport + '\''
+                + ", username='" + username + '\''
+                + ", deposit='" + deposit + '\''
+                + '}';
     }
 }

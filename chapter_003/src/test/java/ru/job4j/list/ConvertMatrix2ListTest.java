@@ -31,7 +31,7 @@ public class ConvertMatrix2ListTest {
                 {3, 4, 5, 6, 8},
         };
         List<Integer> expect = Arrays.asList(
-                1, 2, 3, 4, 5, 3, 4, 5, 6, 7,3, 4, 5, 6, 9, 3, 4, 5, 6, 8
+                1, 2, 3, 4, 5, 3, 4, 5, 6, 7, 3, 4, 5, 6, 9, 3, 4, 5, 6, 8
                 );
         List<Integer> result = list.toList(input);
         assertThat(result, is(expect));

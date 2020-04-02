@@ -16,7 +16,7 @@ public class FindByNameAction implements UserAction {
             System.out.println("There is no items with this name: " + name);
         } else {
             System.out.println("List of items that was found: ");
-            for(Item foundItem: items) {
+            for (Item foundItem: items) {
                 System.out.println(foundItem.getId() + " " + foundItem.getName());
             }
         }

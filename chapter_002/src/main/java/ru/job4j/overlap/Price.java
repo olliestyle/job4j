@@ -1,19 +1,20 @@
 package ru.job4j.overlap;
 
 import java.time.LocalDateTime;
+import java.util.Objects;
 
 /**
  * POJO цена
  */
 
-public class Price implements Cloneable{
+public class Price implements Cloneable {
 
     public Price() {
 
     }
 
-    public Price(String product_code, int number, int depart, LocalDateTime begin, LocalDateTime end, long value) {
-        this.product_code = product_code;
+    public Price(String productCode, int number, int depart, LocalDateTime begin, LocalDateTime end, long value) {
+        this.productCode = productCode;
         this.number = number;
         this.depart = depart;
         this.begin = begin;
@@ -22,7 +23,7 @@ public class Price implements Cloneable{
     }
 
     private long id;
-    private String product_code;
+    private String productCode;
     private int number;
     private int depart;
     private LocalDateTime begin;
@@ -37,12 +38,12 @@ public class Price implements Cloneable{
         this.id = id;
     }
 
-    public String getProduct_code() {
-        return product_code;
+    public String getProductCode() {
+        return productCode;
     }
 
-    public void setProduct_code(String product_code) {
-        this.product_code = product_code;
+    public void setProductCode(String productCode) {
+        this.productCode = productCode;
     }
 
     public int getNumber() {
@@ -87,15 +88,24 @@ public class Price implements Cloneable{
 
     @Override
     public boolean equals(Object obj) {
-        if (this == obj) return true;
-        if (obj == null || getClass() != obj.getClass()) return false;
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null || getClass() != obj.getClass()) {
+            return false;
+        }
         Price price = (Price) obj;
-        return product_code == price.product_code &&
-               number == price.number &&
-                depart == price.depart &&
-                begin.equals(price.begin) &&
-                end.equals(price.end) &&
-                value == price.value;
+        return productCode == price.productCode
+                && number == price.number
+               && depart == price.depart
+               && begin.equals(price.begin)
+               && end.equals(price.end)
+               && value == price.value;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(productCode, number, depart, begin, end, value);
     }
 
     @Override

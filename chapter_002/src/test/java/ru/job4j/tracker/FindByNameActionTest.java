@@ -22,7 +22,7 @@ public class FindByNameActionTest {
         action.execute(new StubInput(new String[]{item.getName()}), tracker);
         String expect = "List of items that was found: " + new StringJoiner("")
                 .add(System.lineSeparator())
-                .add("1. id: " + item.getId() + ". name: " + item.getName())
+                .add("" + item.getId() + " " + item.getName())
                 .add(System.lineSeparator())
                 .toString();
         assertThat(new String(out.toByteArray()), is(expect));

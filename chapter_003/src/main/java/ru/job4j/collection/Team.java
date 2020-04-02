@@ -14,8 +14,12 @@ public class Team {
 
     @Override
     public boolean equals(Object obj) {
-        if(this == obj) return true;
-        if(obj == null || obj.getClass() != getClass()) return false;
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null || obj.getClass() != getClass()) {
+            return false;
+        }
         Team team = (Team) obj;
         return team.city == city && team.department == department;
     }
@@ -23,10 +27,10 @@ public class Team {
     @Override
     public int hashCode() {
         int result = 17;
-        if(city != null) {
+        if (city != null) {
             result = 31 * result + city.hashCode();
         }
-        if(department != null) {
+        if (department != null) {
             result = 31 * result + city.hashCode();
         }
         return result;

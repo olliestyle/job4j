@@ -18,7 +18,7 @@ public class StartUI {
         private void showMenu(List<UserAction> actions) {
         System.out.println("Menu.");
         int index = 0;
-        for(UserAction action: actions) {
+        for (UserAction action: actions) {
             System.out.println(index + " " + action.name());
             index++;
         }

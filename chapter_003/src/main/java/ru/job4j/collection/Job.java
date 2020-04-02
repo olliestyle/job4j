@@ -2,7 +2,7 @@ package ru.job4j.collection;
 
 import java.util.Objects;
 
-public class Job implements Comparable<Job>{
+public class Job implements Comparable<Job> {
 
     private String name;
     private int priority;
@@ -22,10 +22,10 @@ public class Job implements Comparable<Job>{
 
     @Override
     public String toString() {
-        return "Job{" +
-                "name='" + name + '\'' +
-                ", priority=" + priority +
-                '}';
+        return "Job{"
+                + "name='" + name + '\''
+                + ", priority=" + priority
+                + '}';
     }
 
     @Override
@@ -40,8 +40,12 @@ public class Job implements Comparable<Job>{
 
     @Override
     public boolean equals(Object obj) {
-        if (this == obj) return true;
-        if (obj == null || getClass() != obj.getClass()) return false;
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null || getClass() != obj.getClass()) {
+            return false;
+        }
         Job job = (Job) obj;
         return priority == job.priority && name.equals(job.name);
     }
