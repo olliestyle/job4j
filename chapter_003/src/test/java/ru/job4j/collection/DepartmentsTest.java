@@ -38,7 +38,7 @@ public class DepartmentsTest {
     @Test
     public void whenSortDesc() {
         List<String> input = Arrays.asList("k1/sk1/ssk1", "k2/sk1");
-        List<String> expect = Arrays.asList("k2", "k2/sk1","k1", "k1/sk1", "k1/sk1/ssk1");
+        List<String> expect = Arrays.asList("k2", "k2/sk1", "k1", "k1/sk1", "k1/sk1/ssk1");
         List<String> result = Departments.fillGaps(input);
         Departments.sortDesc(result);
         assertThat(result, is(expect));
@@ -47,7 +47,7 @@ public class DepartmentsTest {
     @Test
     public void whenSortDesc2() {
         List<String> input = Arrays.asList("k1/sk1/ssk1", "k1/sk1/ssk2", "k2/sk1");
-        List<String> expect = Arrays.asList("k2", "k2/sk1","k1", "k1/sk1", "k1/sk1/ssk1", "k1/sk1/ssk2");
+        List<String> expect = Arrays.asList("k2", "k2/sk1", "k1", "k1/sk1", "k1/sk1/ssk1", "k1/sk1/ssk2");
         List<String> result = Departments.fillGaps(input);
         Departments.sortDesc(result);
         assertThat(result, is(expect));
