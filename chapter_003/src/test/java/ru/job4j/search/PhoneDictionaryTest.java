@@ -48,4 +48,5 @@ public class PhoneDictionaryTest {
         ArrayList<Person> persons = phones.find("Missed");
         assertThat(true, is(persons.isEmpty()));
     }
+
 }
