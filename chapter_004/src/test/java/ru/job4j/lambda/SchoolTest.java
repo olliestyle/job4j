@@ -40,7 +40,7 @@ public class SchoolTest {
         expected.put(80, new Student(80));
         expected.put(90, new Student(90));
         expected.put(100, new Student(100));
-        Map<Integer, Student> result = input.stream().distinct().collect(Collectors.toMap(Student::getScore, student -> student));
+        Map<Integer, Student> result = School.collectToMap(input, Student::getScore, student -> student);
         assertThat(result, is(expected));
     }
 
