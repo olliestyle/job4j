@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 public class BankService {
 
@@ -30,24 +31,30 @@ public class BankService {
     }
 
     public User findByPassport(String passport) {
-        for (User user: users.keySet()) {
-            if (passport.equals(user.getPassport())) {
-                return user;
-            }
-        }
-        return null;
+        return users.keySet().stream().filter(user -> user.getPassport().equals(passport)).findFirst().orElse(null);
+//        for (User user: users.keySet()) {
+//            if (passport.equals(user.getPassport())) {
+//                return user;
+//            }
+//        }
+//        return null;
     }
 
     public Account findByRequisite(String passport, String requisite) throws AccountNotFoundException {
         User user = findByPassport(passport);
         if (user != null) {
             List<Account> accountList = users.get(user);
-            for (Account accountToFind: accountList) {
-                if (accountToFind.getRequisite().equals(requisite)) {
-                    return accountToFind;
-                }
+            Account accountToFind = accountList.stream().filter(account -> account.getRequisite().equals(requisite)).findFirst().orElse(null);
+            if(accountToFind == null) {
+                throw new AccountNotFoundException("No account found");
             }
-            throw new AccountNotFoundException("No account found");
+            return accountToFind;
+//            for (Account accountToFind: accountList) {
+//                if (accountToFind.getRequisite().equals(requisite)) {
+//                    return accountToFind;
+//                }
+//            }
+//            throw new AccountNotFoundException("No account found");
         }
         return null;
     }
