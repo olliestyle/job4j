@@ -8,6 +8,7 @@ public class ListExample {
     public ListExample listExample;
 
     public int x = 111;
+    public int z = 222;
 
     public static void main(String[] args) {
 
