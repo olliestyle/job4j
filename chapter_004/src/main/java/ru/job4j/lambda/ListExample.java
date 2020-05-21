@@ -1,25 +1,30 @@
 package ru.job4j.lambda;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.LinkedList;
 import java.util.List;
 
 public class ListExample {
 
-    public int j;
-    public ListExample listExample;
+    int i = 5;
 
-    public int x = 111;
-    public int y = 333;
-    public int z = 222;
+    public void doSome(int x) {
+        x = x * 2;
+        System.out.println(x);
+    }
+
+    public void doSome(ListExample listExample) {
+        System.out.println(listExample.i);
+    }
 
     public static void main(String[] args) {
-
-//        int j;
-//        System.out.println(j);
-        List list;
+        int j = 3;
+        ListExample listExample = new ListExample();
+        listExample.doSome(j);
+        System.out.println(j);
+        listExample.doSome(listExample);
+        System.out.println(listExample.i);
     }
 
-    public void hello() {
-        int i;
-        List list1;
-    }
 }
