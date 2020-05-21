@@ -9,6 +9,7 @@ public class ListExample {
 
     public int x = 111;
     public int y = 333;
+    public int z = 222;
 
     public static void main(String[] args) {
 
