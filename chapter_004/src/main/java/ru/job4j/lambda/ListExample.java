@@ -7,8 +7,7 @@ public class ListExample {
     public int j;
     public ListExample listExample;
 
-    public int i = 1111;
-    public int z = 2222;
+    public int x = 111;
 
     public static void main(String[] args) {
 
