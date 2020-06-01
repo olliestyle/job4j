@@ -21,10 +21,12 @@ public class OrderConvertTest {
 
     @Test
     public void whenMultipleOrder() {
-        List<Order> orders = new ArrayList<>();
-        orders.add(new Order("3sfe", "Dress"));
-        orders.add(new Order("4ple", "Bing"));
-        orders.add(new Order("4tre", "Lolly"));
+        List<Order> orders = List.of(new Order("3sfe", "Dress"),
+                new Order("4ple", "Bing"),
+                new Order("4tre", "Lolly"));
+//        orders.add(new Order("3sfe", "Dress"));
+//        orders.add(new Order("4ple", "Bing"));
+//        orders.add(new Order("4tre", "Lolly"));
         HashMap<String, Order> map = OrderConvert.process(orders);
         assertThat(map.get("4tre"), is(new Order("4tre", "Lolly")));
     }
