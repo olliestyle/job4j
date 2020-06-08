@@ -1,14 +1,39 @@
 package ru.job4j.lambda;
 
 import java.util.Objects;
+import java.util.Set;
 
 public class Student implements Comparable<Student>{
+
     private int score;
+    private String name;
     private String surname;
+    private Set<String> units;
+
+    public Student(String name, Set<String> units) {
+        this.name = name;
+        this.units = units;
+    }
 
     public Student(String surname, int score) {
         this.score = score;
         this.surname = surname;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setUnits(Set<String> units) {
+        this.units = units;
+    }
+
+    public Set<String> getUnits() {
+        return units;
     }
 
     public String getSurname() {
