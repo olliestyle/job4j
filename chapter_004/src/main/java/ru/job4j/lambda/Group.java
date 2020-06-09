@@ -24,13 +24,10 @@ public class Group {
 
     public static Map<String, Set<String>> sections(List<Student> students) {
 
-        Stream<Student> studentStream = students.stream();
-        Function<Student, Stream<Group.Holder>> studentHolderFunction = student -> student.getUnits().stream().map(unit -> new Holder(unit, student.getName()));
-
-        return studentStream
+        return students.stream()
                 // из стрима students мы через метод flatMap должны получить от каждого студента несколько объектов Holder(секция, имяСтудента)
                 // каждую секцию мы получаем через метод map, который применяем к множеству units и для каждой секции(unit) получаем новый Holder(unit, name)
-                .flatMap(studentHolderFunction)
+                .flatMap(student -> student.getUnits().stream().map(unit -> new Holder(unit, student.getName())))
                 // т.е. сейчас у нас стрим Holder'ов
                 .collect(Collectors.groupingBy(holder -> holder.key, // Collectors.groupingBy создаёт ключи, проходя по всем Holder'ам и вытаскивая key
                         Collector.of(HashSet::new, // аккумулятор - ссылка на конструктор - создаём объект HashSet
