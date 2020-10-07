@@ -7,7 +7,7 @@ import java.util.List;
 public class PriceUpdater implements PriceUpdate {
 
     @Override
-    public List<Price> merge(List<Price> currentPrices, List<Price> newPrices) throws CloneNotSupportedException {
+    public List<Price> merge(List<Price> currentPrices, List<Price> newPrices) {
         List<Price> updated = new ArrayList<>();
         for (Price currentPrice: currentPrices) {
             for (Price newPrice: newPrices) {
@@ -44,7 +44,7 @@ public class PriceUpdater implements PriceUpdate {
         return false;
     }
 
-    private List<Price> overlaps(Price currentPrice, Price newPrice) throws CloneNotSupportedException {
+    private List<Price> overlaps(Price currentPrice, Price newPrice) {
         List<Price> toAdd = new ArrayList<>();
         if (currentPrice.getValue() == newPrice.getValue()) {
             if (currentPrice.getBegin().compareTo(newPrice.getBegin()) > 0) {
@@ -76,7 +76,9 @@ public class PriceUpdater implements PriceUpdate {
             } else {
                 LocalDateTime temp = currentPrice.getEnd();
                 currentPrice.setEnd(newPrice.getBegin());
-                Price tempPrice = (Price) currentPrice.clone();
+//                Price tempPrice = (Price) currentPrice.clone();
+                Price tempPrice = new Price(currentPrice);
+                tempPrice.equals(currentPrice);
                 toAdd.add(tempPrice);
                 toAdd.add(newPrice);
                 currentPrice.setBegin(newPrice.getEnd());

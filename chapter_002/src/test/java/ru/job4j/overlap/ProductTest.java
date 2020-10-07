@@ -15,7 +15,7 @@ import static org.junit.Assert.assertThat;
 public class ProductTest {
 
     @Test
-    public void simpleTest() throws CloneNotSupportedException {
+    public void simpleTest() {
         PriceUpdater priceUpdater = new PriceUpdater();
         Price firstPrice = new Price("122856", 1, 1,
                 LocalDateTime.of(2013, Month.JANUARY, 1, 00, 00, 00),

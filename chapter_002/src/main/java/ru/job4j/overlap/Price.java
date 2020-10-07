@@ -7,10 +7,19 @@ import java.util.Objects;
  * POJO цена
  */
 
-public class Price implements Cloneable {
+public class Price {
 
     public Price() {
 
+    }
+
+    public Price(Price toCopy) {
+        this.productCode = toCopy.productCode;
+        this.number = toCopy.number;
+        this.depart = toCopy.depart;
+        this.begin = toCopy.begin;
+        this.end = toCopy.end;
+        this.value = toCopy.value;
     }
 
     public Price(String productCode, int number, int depart, LocalDateTime begin, LocalDateTime end, long value) {
