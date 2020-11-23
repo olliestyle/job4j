@@ -4,6 +4,7 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.function.BiConsumer;
 import java.util.function.BinaryOperator;
+import java.util.function.Function;
 import java.util.function.Supplier;
 import java.util.stream.Collector;
 
@@ -60,5 +61,29 @@ public class CollectorClass {
             return left;
         };
         return list.stream().collect(Collector.of(supplier, accumulator, combiner));
+    }
+
+    public static String collectFinisher(List<Integer> list) {
+
+        // определяем, в какую коллекцию сохранить результат
+        // The supplier() must return a function that creates an empty accumulator.
+        // This will also represent the result of the collection process when applied on an empty stream.
+        Supplier<List<Integer>> supplier = LinkedList::new;
+        // указываем, как будут собираться в коллекцию элементы
+        // The job of the accumulator() is to return a function which performs the reduction operation.
+        // It accepts two arguments.
+        // First one being the mutable result container (accumulator) and the second one the stream element that should be folded into the result container.
+        BiConsumer<List<Integer>, Integer> accumulator = List::add;
+        // оператор совмещения
+        // When the stream is collected in parallel then the combiner() method is used to return a function which knows how to merge two accumulators.
+        BinaryOperator<List<Integer>> combiner = (left, right) -> {
+            left.addAll(right);
+            return left;
+        };
+        // The finisher() returns a function which performs the final transformation from the intermediate result container to the final result of type R.
+        // Often times the accumulator already represents the final result, so the finisher can return the identity function.
+        Function<List<Integer>, String> finiser = x -> String.valueOf(x.get(0));
+
+        return list.stream().collect(Collector.of(supplier, accumulator, combiner, finiser));
     }
 }

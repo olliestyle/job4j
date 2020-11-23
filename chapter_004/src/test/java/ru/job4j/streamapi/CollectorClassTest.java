@@ -15,4 +15,12 @@ public class CollectorClassTest {
                 CollectorClass.collect(List.of(1, 2, 3))
         );
     }
+
+    @Test
+    public void testWithFinisher() {
+            assertEquals(
+                    "1",
+                    CollectorClass.collectFinisher(List.of(1, 2, 3))
+            );
+    }
 }
