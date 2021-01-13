@@ -7,10 +7,10 @@ public class EditAction implements UserAction {
     }
 
     @Override
-    public boolean execute(Input input, Tracker tracker) {
+    public boolean execute(Input input, Store store) {
         String id = input.askStr("Enter id of item to edit");
         String name = input.askStr("Set new name: ");
-        boolean canBeReplaced = tracker.replace(id, new Item(name));
+        boolean canBeReplaced = store.replace(id, new Item(name));
         if (canBeReplaced) {
             System.out.println("Item was edited");
         } else {

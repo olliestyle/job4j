@@ -5,11 +5,16 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Random;
 
-public class Tracker {
+public class MemTracker implements Store {
     /**
      * Массив для хранения заявок.
      */
     private final List<Item> items = new ArrayList<>();
+
+    @Override
+    public void init() {
+
+    }
 
     /**
      * Метод добавления заявки в хранилище
@@ -35,7 +40,8 @@ public class Tracker {
         return items;
     }
 
-    public List<Item> findbyName(String key) {
+    @Override
+    public List<Item> findByName(String key) {
         List<Item> itemsFinded = new ArrayList<>();
         for (Item itemToFind: items) {
             if (itemToFind.getName().equals(key)) {
@@ -84,5 +90,10 @@ public class Tracker {
             items.remove(indexOfItemToDelete);
             return true;
         }
+    }
+
+    @Override
+    public void close() throws Exception {
+
     }
 }
