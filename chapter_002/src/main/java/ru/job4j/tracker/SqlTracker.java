@@ -1,12 +1,10 @@
 package ru.job4j.tracker;
 
-import java.io.FileInputStream;
 import java.io.InputStream;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Properties;
-import java.util.Random;
 
 /**
  * Для выполнения запроса PreparedStatement имеет три метода:
@@ -69,37 +67,31 @@ public class SqlTracker implements Store {
 
     @Override
     public boolean replace(String id, Item item) {
+        int rows = 0;
         int idToReplace = indexOf(Integer.valueOf(id));
-        if (idToReplace == -1) {
-            return false;
-        } else {
-            String sqlEdit = "update tracker.public.items set name = ? where id = ?";
-            try(PreparedStatement ps = connection.prepareStatement(sqlEdit)) {
-                ps.setString(1, item.getName());
-                ps.setInt(2, idToReplace);
-                ps.execute();
-            } catch (SQLException e) {
-                e.printStackTrace();
-            }
+        String sqlEdit = "update tracker.public.items set name = ? where id = ?";
+        try (PreparedStatement ps = connection.prepareStatement(sqlEdit)) {
+            ps.setString(1, item.getName());
+            ps.setInt(2, idToReplace);
+            rows = ps.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
         }
-        return true;
+        return rows != 0;
     }
 
     @Override
     public boolean delete(String id) {
-        int idToDelete = indexOf(Integer.valueOf(id));
-        if (idToDelete == -1) {
-            return false;
-        } else {
-            String sqlDelete = "delete from tracker.public.items where id = ?";
-            try(PreparedStatement ps = connection.prepareStatement(sqlDelete)) {
-                ps.setInt(1, idToDelete);
-                ps.execute();
-            } catch (SQLException e) {
-                e.printStackTrace();
-            }
+        int rows = 0;
+        int idToDelete = indexOf(Integer.parseInt(id));
+        String sqlDelete = "delete from tracker.public.items where id = ?";
+        try(PreparedStatement ps = connection.prepareStatement(sqlDelete)) {
+            ps.setInt(1, idToDelete);
+            rows = ps.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
         }
-        return true;
+        return rows != 0;
     }
 
     @Override
@@ -142,12 +134,9 @@ public class SqlTracker implements Store {
     @Override
     public Item findById(String id) {
         Item itemToFind = null;
-        int idToFind = indexOf(Integer.valueOf(id));
-        if (idToFind == -1) {
-            return itemToFind;
-        } else {
+        int idToFind = indexOf(Integer.parseInt(id));
             String sqlEdit = "select * from tracker.public.items where id = ?";
-            try(PreparedStatement ps = connection.prepareStatement(sqlEdit)) {
+            try (PreparedStatement ps = connection.prepareStatement(sqlEdit)) {
                 ps.setInt(1, idToFind);
                 ResultSet rs = ps.executeQuery();
                 if (rs.next()) {
@@ -158,7 +147,6 @@ public class SqlTracker implements Store {
             } catch (SQLException e) {
                 e.printStackTrace();
             }
-        }
         return itemToFind;
     }
 
