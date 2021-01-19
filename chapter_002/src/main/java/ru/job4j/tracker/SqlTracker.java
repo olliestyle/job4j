@@ -17,31 +17,27 @@ import java.util.Properties;
 
 public class SqlTracker implements Store {
 
-    private Connection connection;
+    private final Connection connection;
+
+    public SqlTracker(Connection connection) {
+        this.connection = connection;
+    }
 
     @Override
     public void init() {
-        try (InputStream in = SqlTracker.class.getClassLoader().getResourceAsStream("app.properties")) {
-            Properties config = new Properties();
-            config.load(in);
-            Class.forName(config.getProperty("driver-class-name"));
-            connection = DriverManager.getConnection(
-                    config.getProperty("url"),
-                    config.getProperty("username"),
-                    config.getProperty("password")
-            );
-            DatabaseMetaData metaData = connection.getMetaData();
-            System.out.println(metaData.getUserName());
-            System.out.println(metaData.getURL());
-        } catch (Exception e) {
-            throw new IllegalStateException(e);
-        }
+         try {
+             DatabaseMetaData metaData = connection.getMetaData();
+             System.out.println(metaData.getUserName());
+             System.out.println(metaData.getURL());
+         } catch (SQLException e) {
+             e.printStackTrace();
+         }
     }
 
     @Override
     public Item add(Item item) {
         String sqlAdd = "insert into tracker.public.items (name) values (?)";
-        try(PreparedStatement ps = connection.prepareStatement(sqlAdd)) {
+        try (PreparedStatement ps = connection.prepareStatement(sqlAdd)) {
             ps.setString(1, item.getName());
             ps.execute();
         } catch (SQLException e) {
@@ -53,7 +49,7 @@ public class SqlTracker implements Store {
     private int indexOf(int id) {
         int result = -1;
         String sqlFindId = "select * from tracker.public.items where id = ?";
-        try(PreparedStatement ps = connection.prepareStatement(sqlFindId)) {
+        try (PreparedStatement ps = connection.prepareStatement(sqlFindId)) {
             ps.setInt(1, id);
             ResultSet rs = ps.executeQuery();
             if (rs.next()) {
@@ -85,7 +81,7 @@ public class SqlTracker implements Store {
         int rows = 0;
         int idToDelete = indexOf(Integer.parseInt(id));
         String sqlDelete = "delete from tracker.public.items where id = ?";
-        try(PreparedStatement ps = connection.prepareStatement(sqlDelete)) {
+        try (PreparedStatement ps = connection.prepareStatement(sqlDelete)) {
             ps.setInt(1, idToDelete);
             rows = ps.executeUpdate();
         } catch (SQLException e) {
@@ -98,7 +94,7 @@ public class SqlTracker implements Store {
     public List<Item> findAll() {
         List<Item> result = new ArrayList<>();
         String sqlFindAll = "select * from tracker.public.items";
-        try(PreparedStatement ps = connection.prepareStatement(sqlFindAll)) {
+        try (PreparedStatement ps = connection.prepareStatement(sqlFindAll)) {
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {
                 Item item = new Item();
@@ -116,7 +112,7 @@ public class SqlTracker implements Store {
     public List<Item> findByName(String key) {
         List<Item> result = new ArrayList<>();
         String sqlFindByName = "select * from tracker.public.items where name = ?";
-        try (PreparedStatement ps = connection.prepareStatement(sqlFindByName)){
+        try (PreparedStatement ps = connection.prepareStatement(sqlFindByName)) {
             ps.setString(1, key);
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {

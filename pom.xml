@@ -19,7 +19,32 @@
         <maven.compiler.source>8</maven.compiler.source>
         <maven.compiler.target>8</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+<!--        <db.url>jdbc:postgresql://127.0.0.1:5432/tracker</db.url>-->
+<!--        <db.username>postgres</db.username>-->
+<!--        <db.password>password1</db.password>-->
+<!--        <db.driver>org.postgresql.Driver</db.driver>-->
     </properties>
+
+    <profiles>
+        <profile>
+            <id>test</id>
+            <properties>
+                <db.url>jdbc:postgresql://127.0.0.1:5432/trackertest</db.url>
+                <db.username>postgres</db.username>
+                <db.password>password1</db.password>
+                <db.driver>org.postgresql.Driver</db.driver>
+            </properties>
+        </profile>
+        <profile>
+            <id>production</id>
+            <properties>
+                <db.url>jdbc:postgresql://127.0.0.1:5432/tracker</db.url>
+                <db.username>postgres</db.username>
+                <db.password>password1</db.password>
+                <db.driver>org.postgresql.Driver</db.driver>
+            </properties>
+        </profile>
+    </profiles>
 
     <dependencies>
         <dependency>
