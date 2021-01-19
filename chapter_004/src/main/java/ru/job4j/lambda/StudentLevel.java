@@ -13,7 +13,7 @@ public class StudentLevel {
                     .flatMap(Stream::ofNullable)
                     //.filter(st -> st.getScore() > bound)
                     .sorted(Comparator.reverseOrder())
-                    .takeWhile(st -> st.getScore() > bound )
+                    .takeWhile(st -> st.getScore() > bound)
                     .collect(Collectors.toList());
         }
 }

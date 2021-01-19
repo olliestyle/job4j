@@ -16,12 +16,12 @@ public class PostPreInc {
         System.out.println(++j);
 
         int x = 0;
-        while(x++ < 10) {
+        while (x++ < 10) {
             System.out.print(x + " ");
         }
         System.out.println();
         int z = 0;
-        while(++z < 10) {
+        while (++z < 10) {
             System.out.print(z + " ");
         }
         System.out.println();

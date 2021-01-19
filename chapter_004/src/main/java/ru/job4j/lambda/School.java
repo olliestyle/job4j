@@ -13,7 +13,7 @@ public class School {
         return resultClass;
     }
 
-    public static Map<Integer, Student> collectToMap(List<Student> students, Function <Student, Integer> keyMapper,
+    public static Map<Integer, Student> collectToMap(List<Student> students, Function<Student, Integer> keyMapper,
                                                      Function<Student, Student> valueMapper) {
         return students.stream().distinct().collect(Collectors.toMap(keyMapper, valueMapper));
     }

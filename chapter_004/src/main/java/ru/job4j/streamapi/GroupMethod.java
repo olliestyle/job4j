@@ -36,8 +36,7 @@ public class GroupMethod {
                 return false;
             }
             User user = (User) o;
-            return age == user.age &&
-                    Objects.equals(name, user.name);
+            return age == user.age && Objects.equals(name, user.name);
         }
 
         @Override

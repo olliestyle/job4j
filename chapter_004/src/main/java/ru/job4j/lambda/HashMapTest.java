@@ -65,7 +65,9 @@ public class HashMapTest {
     }
 
     private static String bucketToString(Map.Entry<Integer, String> entry) throws Exception {
-        if (entry == null) return null;
+        if (entry == null) {
+            return null;
+        }
         StringBuilder sb = new StringBuilder();
 
         //Access to the "next" filed of HashMap$Node
@@ -77,7 +79,9 @@ public class HashMapTest {
         while (entry != null) {
             sb.append(entry);
             entry = (Map.Entry<Integer, String>) next.get(entry);
-            if (null != entry) sb.append(" -> ");
+            if (null != entry) {
+                sb.append(" -> ");
+            }
         }
         return sb.toString();
     }

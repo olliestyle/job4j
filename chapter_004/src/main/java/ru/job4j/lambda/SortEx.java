@@ -12,7 +12,7 @@ public class SortEx {
 
         List<Integer> list = new ArrayList<>();
 
-        for(int i = 1000; i > 0; i--) {
+        for (int i = 1000; i > 0; i--) {
             list.add(i);
         }
 //        System.out.println(list);

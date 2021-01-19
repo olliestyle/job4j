@@ -3,7 +3,7 @@ package ru.job4j.lambda;
 import java.util.Objects;
 import java.util.Set;
 
-public class Student implements Comparable<Student>{
+public class Student implements Comparable<Student> {
 
     private int score;
     private String name;
@@ -80,6 +80,6 @@ public class Student implements Comparable<Student>{
 
     @Override
     public int compareTo(Student o) {
-        return o.getScore() > getScore() ? 1 : o.getScore() == getScore() ? 0 : -1 ;
+        return o.getScore() > getScore() ? 1 : o.getScore() == getScore() ? 0 : -1;
     }
 }
