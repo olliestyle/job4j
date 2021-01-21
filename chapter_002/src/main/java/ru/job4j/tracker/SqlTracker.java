@@ -36,14 +36,19 @@ public class SqlTracker implements Store {
 
     @Override
     public Item add(Item item) {
+        Item toAdd = null;
         String sqlAdd = "insert into tracker.public.items (name) values (?)";
-        try (PreparedStatement ps = connection.prepareStatement(sqlAdd)) {
+        try (PreparedStatement ps = connection.prepareStatement(sqlAdd, Statement.RETURN_GENERATED_KEYS)) {
             ps.setString(1, item.getName());
-            ps.execute();
+            ps.executeUpdate();
+            ResultSet rs = ps.getGeneratedKeys();
+            if (rs.next()) {
+                toAdd = new Item(rs.getString("id"), rs.getString("name"));
+            }
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        return null;
+        return toAdd;
     }
 
     private int indexOf(int id) {
