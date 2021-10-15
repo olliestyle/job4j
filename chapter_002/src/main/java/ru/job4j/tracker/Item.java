@@ -50,4 +50,9 @@ public class Item implements Comparable<Item> {
         Item item = (Item) obj;
         return name.equals(item.name) && id.equals(item.id);
     }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, name);
+    }
 }

@@ -9,6 +9,13 @@ import java.util.List;
 import java.util.Properties;
 
 public class StartUI {
+
+    private final Output out;
+
+    public StartUI(Output out) {
+        this.out = out;
+    }
+
     public void init(Input input, Store store, List<UserAction> actions) {
         boolean run = true;
         while (run) {
@@ -30,6 +37,7 @@ public class StartUI {
 
     public static void main(String[] args) {
         Input input = new ConsoleInput();
+        Output output = new ConsoleOutput();
         Input validate = new ValidateInput(input);
         Connection connection;
 //        MemTracker memTracker = new MemTracker();
@@ -48,14 +56,14 @@ public class StartUI {
         try (Store tracker = new SqlTracker(connection)) {
 //            tracker.init();
             List<UserAction> actions = new ArrayList<>();
-            actions.add(new CreateAction());
+            actions.add(new CreateAction(output));
             actions.add(new ShowAllAction());
-            actions.add(new EditAction());
-            actions.add(new DeleteAction());
-            actions.add(new FindByIDAction());
-            actions.add(new FindByNameAction());
+            actions.add(new EditAction(output));
+            actions.add(new DeleteAction(output));
+            actions.add(new FindByIDAction(output));
+            actions.add(new FindByNameAction(output));
             actions.add(new ExitAction());
-            new StartUI().init(validate, tracker, actions);
+            new StartUI(output).init(validate, tracker, actions);
         } catch (Exception e) {
             e.printStackTrace();
         }

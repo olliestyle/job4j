@@ -1,4 +1,4 @@
-package ru.job4j.OOA;
+package ru.job4j.ooa;
 
 public class Log4File {
     private static Log4File instance = null;

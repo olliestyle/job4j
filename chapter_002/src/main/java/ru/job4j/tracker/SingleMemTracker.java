@@ -2,7 +2,7 @@ package ru.job4j.tracker;
 
 import java.util.List;
 
-public final class SingleMemTracker implements Store{
+public final class SingleMemTracker implements Store {
     private MemTracker memTracker = new MemTracker();
     private static SingleMemTracker memTrackerInstance = null;
 

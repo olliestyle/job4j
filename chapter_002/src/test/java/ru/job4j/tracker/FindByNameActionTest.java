@@ -12,13 +12,14 @@ import static org.junit.Assert.*;
 public class FindByNameActionTest {
     @Test
     public void whenCheckOutput() {
+        Output output = new ConsoleOutput();
         ByteArrayOutputStream out = new ByteArrayOutputStream();
         PrintStream def = System.out;
         System.setOut(new PrintStream(out));
         Store memTracker = new MemTracker();
         Item item = new Item("Hello");
         memTracker.add(item);
-        FindByNameAction action = new FindByNameAction();
+        FindByNameAction action = new FindByNameAction(output);
         action.execute(new StubInput(new String[]{item.getName()}), memTracker);
         String expect = "List of items that was found: " + new StringJoiner("")
                 .add(System.lineSeparator())
