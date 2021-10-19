@@ -10,6 +10,7 @@ public class MemTracker implements Store {
      * Массив для хранения заявок.
      */
     private final List<Item> items = new ArrayList<>();
+    private int id = 1;
 
     @Override
     public void init() {
@@ -21,7 +22,7 @@ public class MemTracker implements Store {
      * @param item новая заявка
      */
     public Item add(Item item) {
-        item.setId(this.generateId());
+        item.setId(String.valueOf(id++));
         items.add(item);
         return item;
     }

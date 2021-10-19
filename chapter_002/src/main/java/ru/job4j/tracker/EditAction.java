@@ -15,13 +15,14 @@ public class EditAction implements UserAction {
 
     @Override
     public boolean execute(Input input, Store store) {
-        String id = input.askStr("Enter id of item to edit");
+        output.println(name());
+        int id = input.askInt("Enter id of item to edit");
         String name = input.askStr("Set new name: ");
-        boolean canBeReplaced = store.replace(id, new Item(name));
+        boolean canBeReplaced = store.replace(String.valueOf(id), new Item(name));
         if (canBeReplaced) {
-            System.out.println("Item was edited");
+            output.println("Item was edited");
         } else {
-            System.out.println("There is no item with this id " + id);
+            output.println("There is no item with this id " + id);
         }
         return true;
     }

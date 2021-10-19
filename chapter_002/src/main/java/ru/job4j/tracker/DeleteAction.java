@@ -15,12 +15,13 @@ public class DeleteAction implements UserAction {
 
     @Override
     public boolean execute(Input input, Store store) {
+        output.println(name());
         String id = input.askStr("Enter id of item to delete");
         boolean canBeDeleted = store.delete(id);
         if (canBeDeleted) {
-            System.out.println("Item was deleted");
+            output.println("Item was deleted");
         } else {
-            System.out.println("There is no item with this id " + id);
+            output.println("There is no item with this id " + id);
         }
         return true;
     }
